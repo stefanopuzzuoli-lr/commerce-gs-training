@@ -1,0 +1,15 @@
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version:"4.54.0"
+	compileOnly group: "javax.portlet", name: "portlet-api"
+	compileOnly group: "javax.servlet", name: "javax.servlet-api"
+	compileOnly group: "javax.ws.rs", name: "javax.ws.rs-api"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
+	
+	compileOnly group: "com.liferay", name: "com.liferay.petra.string"
+	compileOnly group: "com.liferay", name: "com.liferay.knowledge.base.api", version:"6.1.8"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.odata.api", version:"2.3.4"
+	compileOnly group: "com.liferay", name: "com.liferay.segments.api", version:"1.10.1"
+	
+	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.account.api"
+	
+}
