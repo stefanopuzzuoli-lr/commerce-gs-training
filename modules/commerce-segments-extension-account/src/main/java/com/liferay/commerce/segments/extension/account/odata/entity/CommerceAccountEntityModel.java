@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * @author Stefano Puzzuoli
  * @review
  */
-public class CommerceAccountEntityModel implements EntityModel {
+public class CommerceAccountEntityModel implements EntityModel  {
 
 	public static final String NAME = "CommerceAccount";
 
@@ -43,6 +43,6 @@ public class CommerceAccountEntityModel implements EntityModel {
 	
 	private static final Log _log = LogFactoryUtil.getLog(
 			CommerceAccountEntityModel.class);
-
+	
 }
 

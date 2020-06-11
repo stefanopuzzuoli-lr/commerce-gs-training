@@ -36,7 +36,6 @@ public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAcc
 			long companyId, String filterString, Locale locale, int start,
 			int end)
 		throws PortalException {
-
 		Hits hits = _oDataSearchAdapter.search(
 			companyId, _getFilterParser(), filterString, CommerceAccount.class.getName(), _entityModel,
 			locale, start, end);		

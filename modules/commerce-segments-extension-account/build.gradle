@@ -12,4 +12,5 @@ dependencies {
 	
 	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.account.api"
 	
+	
 }
