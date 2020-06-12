@@ -119,7 +119,7 @@ public class UserCommerceAccountSegmentsCriteriaContributor
 	public List<Field> getFields(PortletRequest portletRequest) {
 		return Collections.singletonList(
 			new Field(
-				"name",
+				"commerceAccountIds",
 				LanguageUtil.get(_portal.getLocale(portletRequest), "Account"),
 				"string"));
 	}

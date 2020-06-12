@@ -36,10 +36,10 @@ public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAcc
 			long companyId, String filterString, Locale locale, int start,
 			int end)
 		throws PortalException {
+
 		Hits hits = _oDataSearchAdapter.search(
 			companyId, _getFilterParser(), filterString, CommerceAccount.class.getName(), _entityModel,
-			locale, start, end);		
-
+			locale, start, end);
 		return _getCommerceAccounts(hits);
 	}
 
@@ -60,7 +60,6 @@ public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAcc
 	private CommerceAccount _getCommerceAccount(Document document) throws PortalException {
 		long resourcePrimKey = GetterUtil.getLong(
 			document.get(Field.ENTRY_CLASS_PK));
-
 		return _commerceAccountLocalService.getCommerceAccount(resourcePrimKey);
 	}
 

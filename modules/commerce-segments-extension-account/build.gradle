@@ -11,6 +11,7 @@ dependencies {
 	compileOnly group: "com.liferay", name: "com.liferay.segments.api", version:"1.10.1"
 	
 	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.account.api"
+		
 	
 	
 }
