@@ -1,0 +1,6 @@
+Bundle-Name: segments-web-account-fragment
+Bundle-SymbolicName: com.liferay.commerce.segments.account.fragment
+Bundle-Version: 1.0.0
+Fragment-Host: com.liferay.segments.web;bundle-version="1.0.47"
+-sources: true
+Export-Package: com.liferay.commerce.segments.extension.accounts.internal.display.context

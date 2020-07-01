@@ -3,20 +3,15 @@ package com.liferay.commerce.segments.extension.account.internal.field.customize
 
 import com.liferay.commerce.account.model.CommerceAccount;
 import com.liferay.commerce.account.service.CommerceAccountLocalService;
-
-/**
- * @author Eduardo García
- */
-
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.ClassedModel;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
-import com.liferay.portal.kernel.portlet.PortletProvider;
-import com.liferay.portal.kernel.portlet.PortletProviderUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.Portal;
+import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.segments.constants.SegmentsPortletKeys;
 import com.liferay.segments.field.Field;
 import com.liferay.segments.field.customizer.SegmentsFieldCustomizer;
 
@@ -30,12 +25,12 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * @author Stefano Puzzuoli
+ * @author Eduardo García
  */
 @Component(
 	immediate = true,
 	property = {
-		"segments.field.customizer.entity.name=User",
+		"segments.field.customizer.entity.name=CommerceAccount",
 		"segments.field.customizer.key=" + CommerceAccountSegmentsFieldCustomizer.KEY,
 		"segments.field.customizer.priority:Integer=50"
 	},
@@ -80,23 +75,21 @@ public class CommerceAccountSegmentsFieldCustomizer
 	@Override
 	public Field.SelectEntity getSelectEntity(PortletRequest portletRequest) {
 		try {
-			PortletURL portletURL = PortletProviderUtil.getPortletURL(
-				portletRequest, CommerceAccount.class.getName(),
-				PortletProvider.Action.BROWSE);
-
-			if (portletURL == null) {
-				return null;
-			}
-
+			PortletURL portletURL = PortalUtil.getControlPanelPortletURL(
+					portletRequest, SegmentsPortletKeys.SEGMENTS,
+					PortletRequest.RENDER_PHASE);
+			
+			portletURL.setParameter(
+				"mvcRenderCommandName", "selectCommerceAccounts");
 			portletURL.setParameter("eventName", "selectEntity");
 			portletURL.setWindowState(LiferayWindowState.POP_UP);
 
 			return new Field.SelectEntity(
 				"selectEntity",
 				getSelectEntityTitle(
-					_portal.getLocale(portletRequest),
+					PortalUtil.getLocale(portletRequest),
 					CommerceAccount.class.getName()),
-				portletURL.toString(), false);
+				portletURL.toString(), true);
 		}
 		catch (Exception exception) {
 			if (_log.isWarnEnabled()) {
@@ -118,16 +111,14 @@ public class CommerceAccountSegmentsFieldCustomizer
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(
-			CommerceAccountSegmentsFieldCustomizer.class);
+		CommerceAccountSegmentsFieldCustomizer.class);
 
 	private static final List<String> _fieldNames = ListUtil.fromArray(
-		"commerceAccountIds");
-
-	@Reference
-	private Portal _portal;
+		"commerceAccountId");
 
 	@Reference
 	private CommerceAccountLocalService _commerceAccountLocalService;
+
 
 }
 

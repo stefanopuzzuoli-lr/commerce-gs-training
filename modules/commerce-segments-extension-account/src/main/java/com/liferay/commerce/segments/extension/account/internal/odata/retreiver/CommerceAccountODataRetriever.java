@@ -40,6 +40,7 @@ public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAcc
 		Hits hits = _oDataSearchAdapter.search(
 			companyId, _getFilterParser(), filterString, CommerceAccount.class.getName(), _entityModel,
 			locale, start, end);
+	
 		return _getCommerceAccounts(hits);
 	}
 

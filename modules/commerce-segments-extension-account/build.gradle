@@ -11,7 +11,22 @@ dependencies {
 	compileOnly group: "com.liferay", name: "com.liferay.segments.api", version:"1.10.1"
 	
 	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.account.api"
-		
 	
+	compile 'org.osgi:org.osgi.annotation:6.0.0'	
+	
+	compileOnly 'com.liferay.portal:release.portal.api'
+	
+	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.price.list.api", version:"4.4.1"
+	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.price.list.web" , version:"1.1.24"
+	
+	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.currency.api", version:"3.2.1"
+	
+	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.product.api", version:"22.1.1"
+	
+	
+	compileOnly 'org.osgi:org.osgi.core'
+	
+	
+	compileOnly project(":modules:segments-web-account-fragment")
 	
 }

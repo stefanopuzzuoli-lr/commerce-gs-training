@@ -1,5 +1,6 @@
-package com.liferay.segments.internal.odata.entity;
+package com.liferay.commerce.segments.extension.account.odata.entity;
 
+import com.liferay.segments.field.customizer.SegmentsFieldCustomizerRegistry;
 import com.liferay.expando.kernel.model.ExpandoColumn;
 import com.liferay.expando.kernel.model.ExpandoColumnConstants;
 import com.liferay.expando.kernel.service.ExpandoColumnLocalService;
@@ -19,8 +20,6 @@ import com.liferay.portal.odata.entity.EntityModel;
 import com.liferay.portal.odata.normalizer.Normalizer;
 import com.liferay.segments.field.Field;
 import com.liferay.segments.field.customizer.SegmentsFieldCustomizer;
-import com.liferay.segments.field.customizer.SegmentsFieldCustomizerRegistry;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -207,7 +206,7 @@ public class EntityModelFieldMapper {
 				Optional<SegmentsFieldCustomizer>
 					segmentsFieldCustomizerOptional =
 						_segmentsFieldCustomizerRegistry.
-							getSegmentFieldCustomizerOptional(
+						getSegmentFieldCustomizerOptional(
 								entityModelName, entityField.getName());
 
 				if ((entityField.getType() == EntityField.Type.ID) &&
