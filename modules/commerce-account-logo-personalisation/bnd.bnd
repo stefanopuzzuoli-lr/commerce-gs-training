@@ -1,0 +1,4 @@
+Bundle-Name: commerce-account-logo-personalisation
+Bundle-SymbolicName: com.liferay.commerce.account.logo.personalisation
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.commerce.account.logo.personalisation.constants
