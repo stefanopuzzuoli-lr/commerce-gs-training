@@ -24,34 +24,24 @@ import org.osgi.service.component.annotations.Reference;
 /**
  * @author Stefano Puzzuoli
  */
-@Component(
-	immediate = true,
-	property = "model.class.name=com.liferay.commerce.account.model.CommerceAccount",
-	service = ODataRetriever.class
-)
+@Component(immediate = true, property = "model.class.name=com.liferay.commerce.account.model.CommerceAccount", service = ODataRetriever.class)
 public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAccount> {
 
 	@Override
-	public List<CommerceAccount> getResults(
-			long companyId, String filterString, Locale locale, int start,
-			int end)
-		throws PortalException {
+	public List<CommerceAccount> getResults(long companyId, String filterString, Locale locale, int start, int end)
+			throws PortalException {
+		
+		Hits hits = _oDataSearchAdapter.search(companyId, _getFilterParser(), filterString,
+				CommerceAccount.class.getName(), _entityModel, locale, start, end);
 
-		Hits hits = _oDataSearchAdapter.search(
-			companyId, _getFilterParser(), filterString, CommerceAccount.class.getName(), _entityModel,
-			locale, start, end);
-	
 		return _getCommerceAccounts(hits);
 	}
 
 	@Override
-	public int getResultsCount(
-			long companyId, String filterString, Locale locale)
-		throws PortalException {
+	public int getResultsCount(long companyId, String filterString, Locale locale) throws PortalException {
 
-		return _oDataSearchAdapter.searchCount(
-			companyId, _getFilterParser(), filterString, CommerceAccount.class.getName(), _entityModel,
-			 locale);
+		return _oDataSearchAdapter.searchCount(companyId, _getFilterParser(), filterString,
+				CommerceAccount.class.getName(), _entityModel, locale);
 	}
 
 	private FilterParser _getFilterParser() {
@@ -59,8 +49,7 @@ public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAcc
 	}
 
 	private CommerceAccount _getCommerceAccount(Document document) throws PortalException {
-		long resourcePrimKey = GetterUtil.getLong(
-			document.get(Field.ENTRY_CLASS_PK));
+		long resourcePrimKey = GetterUtil.getLong(document.get(Field.ENTRY_CLASS_PK));
 		return _commerceAccountLocalService.getCommerceAccount(resourcePrimKey);
 	}
 
@@ -68,7 +57,7 @@ public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAcc
 		Document[] documents = hits.getDocs();
 
 		List<CommerceAccount> commerceAccounts = new ArrayList<>(documents.length);
-		
+
 		for (Document document : documents) {
 			commerceAccounts.add(_getCommerceAccount(document));
 		}
@@ -80,11 +69,12 @@ public class CommerceAccountODataRetriever implements ODataRetriever<CommerceAcc
 
 	@Reference
 	private FilterParserProvider _filterParserProvider;
-	
+
 	@Reference
 	private CommerceAccountLocalService _commerceAccountLocalService;
 
 	@Reference
 	private ODataSearchAdapter _oDataSearchAdapter;
+
 
 }

@@ -1,5 +1,6 @@
 package com.liferay.commerce.segments.extension.account.odata.entity;
 
+import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.odata.entity.EntityField;
 import com.liferay.portal.odata.entity.EntityModel;
 import com.liferay.portal.odata.entity.IdEntityField;
@@ -19,7 +20,7 @@ public class CommerceAccountEntityModel implements EntityModel  {
 	public CommerceAccountEntityModel() {
 		_entityFieldsMap = EntityModel.toEntityFieldsMap(
 				new IdEntityField(
-					"commerceAccountIds", locale -> "commerceAccountIds",
+					"commerceAccountId", locale -> Field.ENTRY_CLASS_PK,
 					String::valueOf));
 	}
 

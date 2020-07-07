@@ -7,7 +7,7 @@ import com.liferay.segments.field.customizer.SegmentsFieldCustomizer;
 import java.util.Locale;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Stefano Puzzuoli
  */
 public abstract class BaseSegmentsFieldCustomizer
 	implements SegmentsFieldCustomizer {
