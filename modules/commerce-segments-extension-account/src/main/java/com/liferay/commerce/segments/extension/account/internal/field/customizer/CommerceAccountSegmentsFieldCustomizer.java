@@ -9,7 +9,6 @@ import com.liferay.portal.kernel.model.ClassedModel;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
-import com.liferay.portal.kernel.util.Portal;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.segments.constants.SegmentsPortletKeys;
 import com.liferay.segments.field.Field;
@@ -25,7 +24,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * @author Eduardo García
+ * @author Stefano Puzzuoli
  */
 @Component(
 	immediate = true,
@@ -82,8 +81,8 @@ public class CommerceAccountSegmentsFieldCustomizer
 			portletURL.setParameter(
 				"mvcRenderCommandName", "selectCommerceAccounts");
 			portletURL.setParameter("eventName", "selectEntity");
-			portletURL.setWindowState(LiferayWindowState.POP_UP);
-
+			portletURL.setWindowState(LiferayWindowState.POP_UP);			
+			
 			return new Field.SelectEntity(
 				"selectEntity",
 				getSelectEntityTitle(

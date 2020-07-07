@@ -10,7 +10,7 @@ import javax.portlet.PortletURL;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author Eudaldo Alonso
+ * @author Stefano Puzzuoli
  */
 public class SelectCommerceAccountsManagementToolbarDisplayContext
 	extends SearchContainerManagementToolbarDisplayContext {
@@ -19,13 +19,16 @@ public class SelectCommerceAccountsManagementToolbarDisplayContext
 			HttpServletRequest httpServletRequest,
 			LiferayPortletRequest liferayPortletRequest,
 			LiferayPortletResponse liferayPortletResponse,
-			SelectCommerceAccountsDisplayContext selectCommerceAccountsDisplayContext)
+			SelectCommerceAccountsDisplayContext selectCommerceAccountsDisplayContext
+			)
 		throws Exception {
 
 		super(
 				 liferayPortletRequest,
 				 liferayPortletResponse,
 				 httpServletRequest,  selectCommerceAccountsDisplayContext.getSearchContainer());
+		
+		_selectCommerceAccountsDisplayContext = selectCommerceAccountsDisplayContext;
 	}
 
 	@Override
@@ -55,7 +58,7 @@ public class SelectCommerceAccountsManagementToolbarDisplayContext
 
 	@Override
 	public String getSearchContainerId() {
-		return "commerceAccounts";
+		return _selectCommerceAccountsDisplayContext.getSearchContainerId();
 	}
 
 	protected String[] getDisplayViews() {
@@ -71,5 +74,7 @@ public class SelectCommerceAccountsManagementToolbarDisplayContext
 	protected String[] getOrderByKeys() {
 		return new String[] {"name"};
 	}
+
+	private final SelectCommerceAccountsDisplayContext _selectCommerceAccountsDisplayContext;
 
 }

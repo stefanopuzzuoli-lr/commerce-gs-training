@@ -9,8 +9,7 @@ import java.util.Set;
 import javax.portlet.RenderResponse;
 
 /**
- * @author Alessio Antonio Rendina
- * @author Ethan Bustad
+ * @author Stefano Puzzuoli
  */
 public class CommerceAccountItemSelectorChecker extends EmptyOnClickRowChecker {
 

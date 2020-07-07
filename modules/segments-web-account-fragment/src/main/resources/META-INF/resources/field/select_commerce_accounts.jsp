@@ -11,7 +11,7 @@ SelectCommerceAccountsDisplayContext selectCommerceAccountsDisplayContext = (Sel
 
 <aui:form cssClass="container-fluid-1280" name="fm">
 	<liferay-ui:search-container
-		id="selectSegmentsEntryCommerceAccounts"
+		id="<%= selectCommerceAccountsDisplayContext.getSearchContainerId() %>"
 		searchContainer="<%= selectCommerceAccountsDisplayContext.getSearchContainer() %>"
 	>
 		<liferay-ui:search-container-row

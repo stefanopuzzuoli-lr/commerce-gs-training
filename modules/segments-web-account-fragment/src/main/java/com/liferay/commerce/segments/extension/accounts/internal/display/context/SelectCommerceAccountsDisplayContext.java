@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.osgi.service.component.annotations.Reference;
 
 /**
- * @author Eudaldo Alonso
+ * @author Stefano Puzzuoli
  */
 public class SelectCommerceAccountsDisplayContext {
 
@@ -51,15 +51,8 @@ public class SelectCommerceAccountsDisplayContext {
 	}
 
 	public String getEventName() {
-		if (Validator.isNotNull(_eventName)) {
-			return _eventName;
-		}
 
-		_eventName = ParamUtil.getString(
-			_httpServletRequest, "eventName",
-			_renderResponse.getNamespace() + "selectCommerceAccounts");
-
-		return _eventName;
+		return "selectEntity";
 	}
 
 	public long getGroupId() {
@@ -186,14 +179,18 @@ public class SelectCommerceAccountsDisplayContext {
 			return _searchContainer;
 		}
 	
+	public String getSearchContainerId() {
+		return "selectSegmentsEntryCommerceAccounts";
+	}
+	
 	protected long[] getCheckedCommerceAccountIds() {
 		return ParamUtil.getLongValues(
 			_commerceAccountItemSelectorRequestHelper.getRenderRequest(),
 			"checkedCommerceAccountIds");
 	}
+	
 
 	private String _displayStyle;
-	private String _eventName;
 	private Long _groupId;
 	private final HttpServletRequest _httpServletRequest;
 	private String _keywords;

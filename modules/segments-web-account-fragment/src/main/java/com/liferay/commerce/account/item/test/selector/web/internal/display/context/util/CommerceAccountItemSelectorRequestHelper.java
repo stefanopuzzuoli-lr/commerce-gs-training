@@ -9,8 +9,7 @@ import javax.portlet.RenderResponse;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author Alessio Antonio Rendina
- * @author Ethan Bustad
+ * @author Stefano Puzzuoli
  */
 public class CommerceAccountItemSelectorRequestHelper
 	extends BaseRequestHelper {
